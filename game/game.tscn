@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbdds5qqrvocj"]
+
+[ext_resource type="Script" path="res://game/game.gd" id="1_gx8kl"]
+[ext_resource type="Texture2D" uid="uid://klamkvto4dlh" path="res://assets/background/rocks_2.png" id="1_wepi5"]
+[ext_resource type="PackedScene" uid="uid://5xln21xntai1" path="res://plane_cb/plane_character_body.tscn" id="2_1uxf8"]
+[ext_resource type="PackedScene" uid="uid://dm2dwyr6sdyvy" path="res://pipes/pipes.tscn" id="3_45eve"]
+[ext_resource type="PackedScene" uid="uid://c53fsfettt2ek" path="res://game_over/game_over.tscn" id="5_xrnwh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxu01"]
+size = Vector2(481, 15)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_gx8kl")
+pipes_scene = ExtResource("3_45eve")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(259, 313)
+scale = Vector2(1, 1.00947)
+texture = ExtResource("1_wepi5")
+
+[node name="PlaneCharacterBody" parent="." instance=ExtResource("2_1uxf8")]
+position = Vector2(36, 352)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(186, 848)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(56.5, -2.5)
+shape = SubResource("RectangleShape2D_mxu01")
+
+[node name="PipesHolder" type="Node" parent="."]
+
+[node name="SpawnUpper" type="Marker2D" parent="."]
+position = Vector2(530, 340)
+
+[node name="SpawnLower" type="Marker2D" parent="."]
+position = Vector2(530, 540)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameOver" parent="CanvasLayer" instance=ExtResource("5_xrnwh")]
+visible = false
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
