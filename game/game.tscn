@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbdds5qqrvocj"]
+[gd_scene load_steps=11 format=3 uid="uid://dbdds5qqrvocj"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_gx8kl"]
 [ext_resource type="Texture2D" uid="uid://klamkvto4dlh" path="res://assets/background/rocks_2.png" id="1_wepi5"]
 [ext_resource type="PackedScene" uid="uid://5xln21xntai1" path="res://plane_cb/plane_character_body.tscn" id="2_1uxf8"]
 [ext_resource type="PackedScene" uid="uid://dm2dwyr6sdyvy" path="res://pipes/pipes.tscn" id="3_45eve"]
+[ext_resource type="PackedScene" uid="uid://c3q7f8b01jey7" path="res://scrolling_background/scrolling_background.tscn" id="3_blsgp"]
 [ext_resource type="PackedScene" uid="uid://c53fsfettt2ek" path="res://game_over/game_over.tscn" id="5_xrnwh"]
 [ext_resource type="PackedScene" uid="uid://cfl7yotar4psd" path="res://assets/HUD/hud.tscn" id="6_33ev6"]
 [ext_resource type="AudioStream" uid="uid://dqb4lg3hjtl08" path="res://assets/audio/engine.mp3" id="6_wbtgo"]
@@ -16,16 +17,22 @@ size = Vector2(481, 15)
 script = ExtResource("1_gx8kl")
 pipes_scene = ExtResource("3_45eve")
 
+[node name="ScrollingBackground" parent="." instance=ExtResource("3_blsgp")]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(259, 313)
 scale = Vector2(1, 1.00947)
 texture = ExtResource("1_wepi5")
 
 [node name="PlaneCharacterBody" parent="." instance=ExtResource("2_1uxf8")]
 position = Vector2(36, 352)
+collision_mask = 8
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(186, 848)
+collision_layer = 8
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2(56.5, -2.5)
