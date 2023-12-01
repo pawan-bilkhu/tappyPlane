@@ -6,10 +6,13 @@ extends Node2D
 @onready var spawn_upper = $SpawnUpper
 @onready var spawn_lower = $SpawnLower
 @onready var spawn_timer = $SpawnTimer
+@onready var engine_sound = $EngineSound
+@onready var game_over_sound = $GameOverSound
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GameManager.on_game_over.connect(on_game_over)
+	GameManager.set_score(0)
 	spawn_pipes()
 
 func _stop_pipes()-> void:
@@ -32,3 +35,5 @@ func _on_spawn_timer_timeout():
 
 func on_game_over():
 	_stop_pipes()
+	engine_sound.stop()
+	game_over_sound.play()
