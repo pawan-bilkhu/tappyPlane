@@ -8,9 +8,9 @@ extends CharacterBody2D
 
 
 
-const GRAVITY: float = 1000.0
+const GRAVITY: float = 900.0
 
-const POWER: float = -400.0
+const JUMP_STRENGTH: float = -350.0
 
 var _dead: bool = false
 # Called when the node enters the scene tree for the first time.
@@ -31,7 +31,7 @@ func _physics_process(delta):
 
 func fly() -> void:
 	if Input.is_action_just_pressed("fly"):
-		velocity.y = POWER
+		velocity.y = JUMP_STRENGTH
 		animation_player.play("fly")
 		
 func die() -> void:

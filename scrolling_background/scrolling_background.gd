@@ -1,6 +1,6 @@
 extends ParallaxBackground
 
-const SPEED: float = 120.0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,7 +9,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	scroll_offset.x += SPEED*delta*(-1)
+	scroll_offset.x += GameManager._get_scroll_speed()*delta*(-1)
 
 func stop_scroll()->void:
 	set_process(false)

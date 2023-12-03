@@ -12,9 +12,14 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GameManager.on_game_over.connect(on_game_over)
+	GameManager.on_score_updated.connect(_update_spawn_interval)
 	GameManager.set_score(0)
-	spawn_pipes()
+	GameManager._set_pipe_spawn_interval(1.5)
+	GameManager._set_scroll_speed(150)
+	spawn_timer.start(GameManager._get_pipe_spawn_interval())
+	
 
+	
 func _stop_pipes()-> void:
 	spawn_timer.stop()
 	for pipe in pipes_holder.get_children():
@@ -31,9 +36,13 @@ func spawn_pipes() -> void:
 func _on_spawn_timer_timeout():
 	spawn_pipes()
 	
-
+func _update_spawn_interval():
+	# print("%f" % GameManager._get_pipe_spawn_interval())
+	spawn_timer.set_wait_time(GameManager._get_pipe_spawn_interval())
+	
 
 func on_game_over():
+	spawn_timer.stop()
 	_stop_pipes()
 	engine_sound.stop()
 	game_over_sound.play()

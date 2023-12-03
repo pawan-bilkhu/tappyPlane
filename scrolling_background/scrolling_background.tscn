@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c3q7f8b01jey7"]
 
 [ext_resource type="Script" path="res://scrolling_background/scrolling_background.gd" id="1_mwq5e"]
-[ext_resource type="PackedScene" uid="uid://v2rtfcm5t0m1" path="res://scrolling_layer.tscn" id="2_kjy16"]
+[ext_resource type="PackedScene" uid="uid://v2rtfcm5t0m1" path="res://scrolling_layer/scrolling_layer.tscn" id="2_kjy16"]
 [ext_resource type="Texture2D" uid="uid://dn4150qsj5hh1" path="res://assets/background/sky.png" id="3_38vro"]
 [ext_resource type="Texture2D" uid="uid://d1yjtg2hkgo5n" path="res://assets/background/clouds_2.png" id="4_e31vx"]
 [ext_resource type="Texture2D" uid="uid://cwj7gijm0tcjg" path="res://assets/background/rocks_1.png" id="5_fjs3h"]

@@ -57,6 +57,7 @@ _data = {
 }
 
 [node name="PlaneCharacterBody" type="CharacterBody2D" groups=["plane"]]
+scale = Vector2(0.52, 0.52)
 script = ExtResource("1_xq4s3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
