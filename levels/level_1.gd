@@ -18,14 +18,12 @@ func _ready():
 	GameManager._set_scroll_speed(150)
 	spawn_timer.start(GameManager._get_pipe_spawn_interval())
 	
-
 	
 func _stop_pipes()-> void:
 	spawn_timer.stop()
 	for pipe in pipes_holder.get_children():
 		pipe.set_process(false)
 	
-
 
 func spawn_pipes() -> void:
 	var position_y = randf_range(spawn_upper.position.y, spawn_lower.position.y)

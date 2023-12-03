@@ -10,5 +10,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("fly"):
-		GameManager.load_game_scene()
+		GameManager.load_level(1)
 	
